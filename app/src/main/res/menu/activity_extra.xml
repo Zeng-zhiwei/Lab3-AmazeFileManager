@@ -50,8 +50,8 @@
         android:title=""/>
     <item
         android:id="@+id/hiddenitems"
-        android:visible="false"
-        android:title="@string/hiddenfiles" />
+        android:title="@string/hiddenfiles"
+        android:visible="false" />
     <item
         android:id="@+id/sethome"
         android:title="@string/set_as_home"/>

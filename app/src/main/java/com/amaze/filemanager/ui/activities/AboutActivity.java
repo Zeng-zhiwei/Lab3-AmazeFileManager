@@ -22,6 +22,7 @@ package com.amaze.filemanager.ui.activities;
 
 import static com.amaze.filemanager.utils.Utils.openURL;
 
+import com.amaze.filemanager.DisplayMessageActivity;
 import com.amaze.filemanager.LogHelper;
 import com.amaze.filemanager.R;
 import com.amaze.filemanager.ui.activities.superclasses.BasicActivity;
@@ -46,6 +47,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.palette.graphics.Palette;
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 
 /** Created by vishal on 27/7/16. */
 public class AboutActivity extends BasicActivity implements View.OnClickListener {
@@ -75,6 +81,9 @@ public class AboutActivity extends BasicActivity implements View.OnClickListener
   private static final String URL_REPO_XDA =
       "http://forum.xda-developers.com/android/apps-games/app-amaze-file-managermaterial-theme-t2937314";
   private static final String URL_REPO_RATE = "market://details?id=com.amaze.filemanager";
+
+  public static final String EXTRA_MESSAGE = "com.amaze.filemanager.MESSAGE";
+
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -135,6 +144,16 @@ public class AboutActivity extends BasicActivity implements View.OnClickListener
         });
   }
 
+  public void sendMessage(View view) {
+    // Do something in response to button
+    Intent intent = new Intent(this, DisplayMessageActivity.class);
+    EditText editText = (EditText) findViewById(R.id.editTextTextPersonName2);
+    String message = editText.getText().toString();
+    intent.putExtra(EXTRA_MESSAGE, message);
+    startActivity(intent);
+  }
+
+  /** Called when the user taps the Send button */
   /**
    * Calculates aspect ratio for the Amaze header
    *
@@ -264,4 +283,5 @@ public class AboutActivity extends BasicActivity implements View.OnClickListener
       billing.destroyBillingInstance();
     }
   }
+
 }
